@@ -26,6 +26,5 @@ class ExcludeRoadsSeeder extends Seeder
 
     public function test(): void
     {
-        return "anhquyendeptraivcl";
     }
 }
