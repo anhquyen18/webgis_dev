@@ -1,0 +1,29 @@
+version: "3"
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - "8080:80"
+        volumes:
+            - .:/var/www/html
+        environment:
+            - APP_ENV=local
+            - DB_CONNECTION=pgsql
+            - DB_HOST=db
+            - DB_PORT=5432
+            - DB_DATABASE=web_gis_dev
+            - DB_USERNAME=postgres
+            - DB_PASSWORD=
+    db:
+        image: postgres:11
+        environment:
+            POSTGRES_DB: web_gis_dev
+            POSTGRES_USER: your_database_user
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data:
