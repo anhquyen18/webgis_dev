@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -26,6 +27,7 @@ class User extends Authenticatable implements JWTSubject
         "department_id",
         "status_id",
         'change_password_at',
+        'birthday',
     ];
 
     /**
