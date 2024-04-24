@@ -52,6 +52,7 @@ class MapController extends Controller
         return "nothing happens";
     }
 
+
     public function test2()
     {
         return "anhquyendeptraivcl";

@@ -10,6 +10,7 @@ use App\Http\Controllers\ShapefileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExcludeRoadsController;
 use App\Http\Controllers\MeasuringStationDataController;
+use App\Http\Controllers\SwmmController;
 use App\Http\Controllers\UserStatusController;
 
 /*
@@ -35,7 +36,6 @@ Route::post('check-reset-link', [UserController::class, 'checkResetPasswordLink'
 Route::post('reset-password', [UserController::class, 'resetPassword']);
 // Route::post('sign-up-user', [UserController::class, 'signUpUser']);
 Route::group(['middleware' => 'jwt'], function () {
-    Route::get('test2', [MapController::class, 'test2']);
 
     Route::post('signed-in', [UserController::class, 'getAuthenticatedUser']);
     Route::post('user-update-info', [UserController::class, 'userUpdateInfo']);
@@ -56,9 +56,12 @@ Route::post('search-feature', [ShapefileController::class, 'searchFeature']);
 Route::post('get-geoserver-feature-by-id', [ShapefileController::class, 'getGeoserverFeatureById']);
 // Route::get('test', [ShapefileController::class, 'testController']);
 Route::get('getcrs', [MapController::class, 'getCrs']);
+Route::get('test', [MapController::class, 'test']);
+Route::get('test1', [MapController::class, 'test1']);
+Route::get('test2', [MapController::class, 'test2']);
+
 Route::post('insert-exclude-roads', [ExcludeRoadsController::class, 'insertExcludeRoads']);
 Route::post('get-measuring-data', [MeasuringStationDataController::class, 'getData']);
-Route::get('test', [MapController::class, 'test']);
 
 Route::get('get-user-status', [UserStatusController::class, 'index']);
 
@@ -67,6 +70,13 @@ Route::get('get-user-status', [UserStatusController::class, 'index']);
 Route::get('send-verification-email', [EmailVerificationController::class, 'sendVerificationEmail']);
 // Route::post('/sign-in', [UserController::class, 'signIn']);
 // Route::get('/admin', [UserController::class, 'testRoute']);
+
+Route::get('read-inp', [SwmmController::class, 'readInp']);
+Route::get('write-inp', [SwmmController::class, 'writeInp']);
+Route::get('read-rpt', [SwmmController::class, 'readRpt']);
+Route::get('read-out', [SwmmController::class, 'readOut']);
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
